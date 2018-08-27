@@ -1,0 +1,22 @@
+language: android
+android:
+  components:
+    - tools
+    - platform-tools
+    - build-tools-27.0.3
+    - android-27
+    - extra-android-m2repository
+
+before_install:
+  - sudo apt install build-essential libboost-dev libboost-filesystem-dev libboost-iostreams-dev libboost-regex-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libglew-dev libpng-dev libcairo-dev libfreetype6-dev libvorbis-dev libsdl2-*-dev
+  - cd $HOME
+  - wget -q https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip
+  - unzip -qq android-ndk-r16b-linux-x86_64.zip
+  - export ANDROID_NDK_HOME=$HOME/android-ndk-r16b
+  - cd $TRAVIS_BUILD_DIR
+  - wget https://libsdl.org/release/SDL2-2.0.8.tar.gz
+  - tar xvfz SDL2-2.0.8.tar.gz
+
+script:
+  - ./SDL2-2.0.8/build-scripts/androidbuild.sh org.anura.citadel
+  - ./gradlew assemble
