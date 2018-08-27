@@ -8,6 +8,7 @@ android:
     - extra-android-m2repository
 
 before_install:
+  - sudo apt update   
   - sudo apt install build-essential libboost-dev libboost-filesystem-dev libboost-iostreams-dev libboost-regex-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libglew-dev libpng-dev libcairo-dev libfreetype6-dev libvorbis-dev libsdl2-*-dev
   - cd $HOME
   - wget -q https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip
